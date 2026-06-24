@@ -65,13 +65,15 @@ button {
 
 .brand h1 {
   font-size: 19px;
+  color: #111827;
+  font-weight: 900;
 }
 
 .brand p {
   margin-top: 2px;
   font-size: 12px;
-  color: #8a93a3;
-  font-weight: 600;
+  color: #111827;
+  font-weight: 700;
 }
 
 .menu {
@@ -134,6 +136,7 @@ button {
 .panel-title h2 {
   font-size: 23px;
   font-weight: 900;
+  color: #111827;
 }
 
 .panel-title p {
@@ -817,4 +820,70 @@ button {
   font-size: 12px;
   color: #667085;
   font-weight: 700;
+}
+
+.panel-toggle {
+  position: absolute;
+  top: 110px;
+  z-index: 100;
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  font-size: 18px;
+  font-weight: 900;
+  color: #0b3f91;
+}
+
+.left-toggle {
+  left: 450px;
+}
+
+.panel-title-row,
+.detail-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.inner-close-btn {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 8px;
+  background: #eef2f7;
+  color: #111827;
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.inner-close-btn:hover {
+  background: #0b3f91;
+  color: white;
+}
+
+.open-panel-btn {
+  position: absolute;
+  z-index: 50;
+  border: none;
+  border-radius: 999px;
+  background: white;
+  color: #0b3f91;
+  font-weight: 900;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.18);
+  padding: 13px 18px;
+}
+
+.open-left-panel {
+  top: 22px;
+  left: 28px;
+}
+
+.open-right-panel {
+  top: 22px;
+  right: 28px;
 }

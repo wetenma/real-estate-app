@@ -191,6 +191,9 @@ async function searchKakaoPlace(query) {
   };
 
   try {
+
+    console.log("검색:", query);
+
     const addressResponse = await axios.get(
       "https://dapi.kakao.com/v2/local/search/address.json",
       {
@@ -210,7 +213,9 @@ async function searchKakaoPlace(query) {
       };
     }
   } catch (error) {
-    console.log("주소검색 실패:", query, error.message);
+    console.log("전체 에러:", error.response?.data);
+    console.log("상태코드:", error.response?.status);
+    console.log("메시지:", error.message);
   }
 
   try {

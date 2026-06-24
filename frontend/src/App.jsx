@@ -65,7 +65,9 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [trendData, setTrendData] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
-
+  const [showLeftPanel, setShowLeftPanel] = useState(true);
+  const [showRightPanel, setShowRightPanel] = useState(true);
+  
   const mapRef = useRef(null);
   const regionOverlayRefs = useRef([]);
   const dongOverlayRefs = useRef([]);
@@ -441,34 +443,44 @@ function App() {
   return (
     <div className="app">
       <header className="navbar">
-        <div className="brand">
-          <div className="brand-icon">H</div>
-          <div>
-            <h1>Home Insight</h1>
-            <p>부동산 가격 분석 플랫폼</p>
-          </div>
-        </div>
+  <div className="brand">
+    <div className="brand-icon">K</div>
 
-        <nav className="menu">
-          <span className="active">매매/전·월세</span>
-          <span>신축분양</span>
-          <span>인구흐름</span>
-        </nav>
-      </header>
+    <div className="brand-text">
+      <h1>Kim Soohyeon</h1>
+      <p>부동산 가격 분석 플랫폼</p>
+    </div>
+  </div>
+
+  <nav className="menu">
+    <span className="active">매매/전·월세</span>
+  </nav>
+</header>
 
       <main className="map-container">
         <div id="kakao-map" className="kakao-map"></div>
+
+       
 
         <div className="breadcrumb">
           <button onClick={goRegionLevel}>전체 지역</button>
           {selectedRegion && <button onClick={goDongLevel}>{selectedRegion.name}</button>}
           {selectedDong && <button>{selectedDong.dong}</button>}
         </div>
-
+        {showLeftPanel && (
         <section className="left-panel">
-          <div className="panel-title">
-            <h2>실거래가 검색</h2>
-            <p>공공데이터 기반 아파트 실거래가입니다.</p>
+          <div className="panel-title panel-title-row">
+            <div>
+             <h2>실거래가 검색</h2>
+              <p>공공데이터 기반 아파트 실거래가입니다.</p>
+           </div>
+
+            <button
+               className="inner-close-btn"
+             onClick={() => setShowLeftPanel(false)}
+           >
+             −
+            </button>
           </div>
 
           <div className="search-row search-wrap">
@@ -644,11 +656,32 @@ function App() {
             </div>
           )}
         </section>
+        )}
 
+        {!showLeftPanel && (
+         <button
+            className="open-panel-btn open-left-panel"
+           onClick={() => setShowLeftPanel(true)}
+         >
+           실거래가 검색 열기
+          </button>
+        )}
+
+
+        {showRightPanel && (
         <aside className="detail-panel">
-          <div className="detail-label">
-            {selectedApartment ? "아파트 상세정보" : selectedDong ? "동 통계" : "지역 통계"}
-          </div>
+          <div className="detail-header-row">
+  <div className="detail-label">
+    {selectedApartment ? "아파트 상세정보" : selectedDong ? "동 통계" : "지역 통계"}
+  </div>
+
+  <button
+    className="inner-close-btn"
+    onClick={() => setShowRightPanel(false)}
+  >
+    −
+  </button>
+</div>
 
           <h2>
             {selectedApartment
@@ -726,6 +759,17 @@ function App() {
             </>
           )}
         </aside>
+        )}
+
+{!showRightPanel && (
+  <button
+    className="open-panel-btn open-right-panel"
+    onClick={() => setShowRightPanel(true)}
+  >
+    지역통계 열기
+  </button>
+)}
+
       </main>
     </div>
   );
